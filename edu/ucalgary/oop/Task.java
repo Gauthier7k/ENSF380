@@ -3,6 +3,29 @@ package edu.ucalgary.oop;
 import java.util.Objects;
 
 public class Task {
+    private String id;
+    private String title;
+    private boolean isCompleted;
+
+    //this constructor sets the default value for isCompleted to false
+    public Task(String id, String title) {
+        this.id = id;
+        this.title = title;
+        this.isCompleted = false;
+    }
+
+    public Task copy() {
+        return new Task(this.id, this.title);
+    }
+
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public boolean isCompleted() { return isCompleted; }
+    public void setCompleted(boolean completed) { this.isCompleted = completed; }
 
     @Override
     public boolean equals(Object obj) {
