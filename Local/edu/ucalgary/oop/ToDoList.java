@@ -9,11 +9,11 @@ public class ToDoList implements IToDoList {
     Stack<List<Task>> history = new Stack<List<Task>>();
 
     private void copyAndPush(){
-        List<Task>copylist = new ArrayList<Task>();
+        List<Task> copyList = new ArrayList<Task>();
         for (Task task : this.tasks) {
-            copylist.add(task.copy());
+            copyList.add(task.copy());
         }
-    this.history.push(copylist);
+    this.history.push(copyList);
     }
 
 
@@ -26,10 +26,16 @@ public class ToDoList implements IToDoList {
     @Override
     public void deleteTask(String taskID) {
         copyAndPush();
+        Task foundTask = null;
+
         for (Task task : this.tasks) {
             if (task.getId().equals(taskID)) {
-                this.tasks.remove(task);
+                foundTask = task;
             }
+        }
+
+        if (foundTask != null) {
+            this.tasks.remove(foundTask);
         }
     }
 
