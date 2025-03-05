@@ -8,16 +8,24 @@ public class ToDoList implements IToDoList {
     List<Task> tasks = new ArrayList<Task>();
     Stack<List<Task>> history = new Stack<List<Task>>();
 
+    private void copyAndPush(){
+        List<Task>copylist = new ArrayList<Task>();
+        for (Task task : this.tasks) {
+            copylist.add(task.copy());
+        }
+    this.history.push(copylist);
+    }
+
+
     @Override
     public void addTask(Task task) {
-        this.history.push(this.tasks);
+        copyAndPush();
         this.tasks.add(task);
     }
 
     @Override
     public void deleteTask(String taskID) {
-        this.history.push(this.tasks);
-
+        copyAndPush();
         for (Task task : this.tasks) {
             if (task.getId().equals(taskID)) {
                 this.tasks.remove(task);
@@ -27,7 +35,7 @@ public class ToDoList implements IToDoList {
 
     @Override
     public void completeTask(String taskID) {
-        this.history.push(this.tasks);
+        copyAndPush();
 
         for (Task task : this.tasks) {
             if (task.getId().equals(taskID)) {
@@ -38,7 +46,7 @@ public class ToDoList implements IToDoList {
 
     @Override
     public void editTask(String taskID, String taskName, Boolean completed) {
-        this.history.push(this.tasks);
+        copyAndPush();
 
         for (Task task : this.tasks) {
             if (task.getId().equals(taskID)) {
