@@ -15,7 +15,7 @@ public class Task {
     }
 
     public Task copy() {
-        return new Task(this.id, this.title, this.isCompleted);
+        return new Task(this.id, this.title);
     }
 
     public String getId() { return id; }
