@@ -7,17 +7,11 @@ public class Task {
     private String title;
     private boolean isCompleted;
 
-    //this cinctructor sets the default value for isCompleted to false
+    //this constructor sets the default value for isCompleted to false
     public Task(String id, String title) {
         this.id = id;
         this.title = title;
         this.isCompleted = false;
-    }
-
-    public Task(String id, String title, boolean isCompleted) {
-        this.id = id;
-        this.title = title;
-        this.isCompleted = isCompleted;
     }
 
     public Task copy() {
